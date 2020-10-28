@@ -1,0 +1,28 @@
+version: "3"
+
+services: 
+    weather_backend:
+        build: ./backend
+        expose:
+            - 9000
+        environment: 
+            APPID: ${APPID}
+            MAP_ENDPOINT: http://api.openweathermap.org/data/2.5
+            PORT: 9000
+        ports: 
+            - 9000:9000
+        command: npm run dev
+
+    weather_frontend:
+        build: ./frontend
+        environment: 
+            ENDPOINT: http://localhost:9000/api
+            HOST: localhost
+            PORT: 8000
+        expose:
+            - 8000
+        ports: 
+            - 8000:8000
+        links: 
+            - weather_backend
+        command: npm start
