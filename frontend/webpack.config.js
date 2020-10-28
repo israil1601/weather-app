@@ -5,7 +5,7 @@ const TransferWebpackPlugin = require('transfer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const GLOBALS = {
-  'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://0.0.0.0:9000/api'),
+  'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://localhost:9000/api'),
 };
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
   cache: true,
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    main: ['@babel/polyfill', path.join(__dirname, 'src/index.jsx')],
+    main: ['@babel/polyfill', path.join(__dirname, 'src/index.js')],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -23,14 +23,15 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: 'src/public',
+    contentBase: 'public',
     historyApiFallback: true,
     disableHostCheck: true,
-    host: process.env.HOST || '0.0.0.0',
+    host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8000,
   },
   output: {
-    filename: '[name].[hash:8].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'main.js',
     publicPath: '/',
   },
   module: {
@@ -53,12 +54,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/public/index.html',
+      template: 'public/index.html',
       filename: 'index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new TransferWebpackPlugin([{ from: 'src/public' }], '.'),
+    new TransferWebpackPlugin([{ from: 'public' }], '.'),
     new webpack.DefinePlugin(GLOBALS),
   ],
 };

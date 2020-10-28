@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+.current-weather-container {
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-weather {
+  width: 50vw;
+  height: 30vh;
+}
+
+.hourly-weather-container {
+  height: 30vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2vh;
+}
+
+.hourly-weather {
+  height: 15vh;
+  width: 25vw;
+}
+
+.weather-card {
+  height: 100%;
+  width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #eee;
+  }
+
+.temp {
+  font-size: 2em;
+}
+
+.weather {
+  font-size: 1.5em;
+}
+
+.time-place {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5em;
+}
