@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 const cors = require("kcors");
 
 // Set your API key here
-const appId = process.env.APPID || "";
+const appId = process.env.APPID || "41f00d2daf5309fb6dc08a01df8c388c";
 const mapURI =
   process.env.MAP_ENDPOINT || "http://api.openweathermap.org/data/2.5";
 

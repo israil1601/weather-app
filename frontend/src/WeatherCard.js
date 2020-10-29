@@ -4,7 +4,8 @@ const WeatherCard = (props) => {
   const { temp, weather } = props.weather;
   const weatherDescription = weather ? weather[0].description : "";
   const date = new Date();
-  const hours = date.getHours() + props.hour;
+  date.setHours(date.getHours() + props.hour);
+  const hours = date.getHours();
   const minutes = date.getMinutes();
   const time = `${hours}:${minutes}`;
 
