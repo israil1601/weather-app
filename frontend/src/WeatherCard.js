@@ -7,8 +7,7 @@ const WeatherCard = (props) => {
   date.setHours(date.getHours() + props.hour);
   const hours = date.getHours();
   const minutes = date.getMinutes();
-  const time = `${hours < 10 ? '0' + hours : hours}:${minutes}`;
-
+  const time = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
   return (
     <div className="weather-card">
       <div className="temp">{Math.round(temp)} °C</div>
