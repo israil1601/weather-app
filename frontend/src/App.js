@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
 import WeatherCard from "./WeatherCard";
 
 const baseURL = process.env.ENDPOINT;
@@ -34,14 +35,12 @@ const App = () => {
 
   const backgroundStyle = {
     backgroundImage: `url('./backgrounds/${currentBackground}.jpg')`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
   };
 
   return (
-    <div style={backgroundStyle}>
+    <div style={backgroundStyle} className="background">
       <div className="current-weather-container">
+        <SearchBar fetchData={fetchData} />
         {currentWeather ? (
           <div className="current-weather">
             <WeatherCard
